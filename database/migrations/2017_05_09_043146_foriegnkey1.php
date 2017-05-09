@@ -1,11 +1,10 @@
 <?php
-namespace Database\Migrations;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Foreignkey extends Migration
+class Foriegnkey1 extends Migration
 {
     /**
      * Run the migrations.
@@ -54,6 +53,6 @@ class Foreignkey extends Migration
      */
     public function down()
     {
-        Schema::disableForeignKeyConstraints();
+        //
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Migrations;
+// namespace Database\Migrations;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -17,7 +17,7 @@ class CreateTechnicalsTable extends Migration
     {
         Schema::create('technicals', function (Blueprint $table) {
             $table->increments('id');
-            $table->increments('name');
+            $table->string('name');
             $table->timestamps();
         });
     }
