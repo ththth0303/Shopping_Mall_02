@@ -51,4 +51,17 @@ class Helpers
 
         return $profileProduct;
     }
+
+    public static function totalCart($products, $cart)
+    {
+        $total = 0;
+        foreach ($products as $product) {
+            if ($product['sale_percent']) {
+                $total += $product['price']*(100 - $product['sale_percent'])*$cart[$product['id']]/100;
+            } else {
+                $total += $product['price']*$cart[$product['id']];
+            }
+        }
+        return $total;
+    }
 }
