@@ -34,10 +34,10 @@
                 </div> 
                 <div class="col-xs-12 col-sm-2 no-margin">
                     <div class="price">
-                    @if ($product['sale_percent'])
-                        {{ number_format($product['price']*$product['sale_percent']*session()->get('cart')[$product['id']]/100) }}
+                    @if ($cart['sale_percent'])
+                        {{ number_format($cart['sale_percent']*$cart['price']/100) . 'đ' }}
                     @else
-                        {{ number_format($product['price']*session()->get('cart')[$product['id']]) }}
+                        {{ number_format($cart['price']) . 'đ' }}
                     @endif
                     </div>
                     <a class="close-btn" product="{{ $product['id'] }}" mainCart="1" href="javascript:void(0)"></a>
@@ -56,7 +56,7 @@
                     <ul class="tabled-data no-border inverse-bold">
                         <li>
                             <label>cart subtotal</label>
-                            <div class="value pull-right">{{ number_format($total) . 'd' }}</div>
+                            <div class="value pull-right">{{ $total . 'd' }}</div>
                         </li>
                         <li>
                             <label>shipping</label>
@@ -66,7 +66,7 @@
                     <ul id="total-price" class="tabled-data inverse-bold no-border">
                         <li>
                             <label>order total</label>
-                            <div class="value pull-right">{{ number_format($total) . 'd' }}</div>
+                            <div class="value pull-right">{{ $total . 'd' }}</div>
                         </li>
                     </ul>
                     <div class="buttons-holder">

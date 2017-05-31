@@ -7,7 +7,7 @@
         <div class="total-price-basket"> 
             <span class="lbl">{{ trans('sites.yourcart') }}</span>
             <span class="total-price">
-                <span class="value">{{ !empty($total)? number_format($total) : '0' . 'đ' }}</span>
+                <span class="value">{{ !empty($total)? $total : '0' . 'đ' }}</span>
             </span>
         </div>
     </a>
@@ -27,9 +27,9 @@
                     <div class="col-xs-8 col-sm-8 no-margin">
                         <div class="title">{{ $cart['name'] }}</div>
                         @if ($cart['sale_percent'])
-                        <div class="price">{{ number_format($cart['sale_percent']*$cart['price']/100) . 'đ' }}</div>
+                            <div class="price">{{ number_format($cart['sale_percent']*$cart['price']/100) . 'đ' }}</div>
                         @else
-                        <div class="price">{{ number_format($cart['price']) . 'đ' }}</div>
+                            <div class="price">{{ number_format($cart['price']) . 'đ' }}</div>
                         @endif
                     </div>
                 </div>

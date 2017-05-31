@@ -24,7 +24,7 @@ class CartController extends Controller
         if ($cart = session()->get('cart')) {
             $products = $this->product->wherein('id', array_keys(session()->get('cart')))->with('productImages')->get();
             $total = Helpers::totalCart($products, $cart);
-            // return $total;
+             // return $total;
             return view('sites.user.cart')->with(['products' => $products, 'total' => $total]);
         }
         
@@ -69,7 +69,6 @@ class CartController extends Controller
         $cart = session()->get('cart');
         $cart[$request->product] = $request->qty;
         session()->put('cart', $cart);
-        print_r($cart);
         $products = $this->product->wherein('id', array_keys($cart))->with('productImages')->get();
         $total = Helpers::totalCart($products, $cart);
             // return $total;

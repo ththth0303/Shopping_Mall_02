@@ -46,18 +46,10 @@ class HomeController extends Controller
                 $query->where('is_main', 1);
             }])->orderBy('sale_percent', 'desc')->get();
         $technicals = $this->technical->all();
-        $wishlists = [];
-        if (Auth::check()) {
-            $wishlists =  $this->wishlist->where('user_id', Auth::user()->id)->get(['product_id'])->toArray();
-            foreach ($wishlists as $key => $wishlist) {
-                $wishlists[$key ] = $wishlist['product_id'];
-            }
-        }
 
         return view('sites.home.index')
                     ->with([
                         'products' => $products,
-                        'wishlists' => $wishlists,
                         'technicals' => $technicals
                     ]);
     }
@@ -80,7 +72,8 @@ class HomeController extends Controller
                         });
                     return $subCategory;
                 });
-
+            // $products = $this->category->where('id', $request->category)->with('products.productImages')->get();
+            // return $products;
             return view('sites._components.subCategory')->with('products', $products);
         } elseif ($price = $request->price) {
             $products;

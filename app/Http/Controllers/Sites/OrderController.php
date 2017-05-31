@@ -63,7 +63,7 @@ class OrderController extends Controller
                 $orderDetail['product_id'] = $product['id'];
                 $orderDetail['quantity'] = $cart[$product['id']];
                 if ($product['sale_percent']) {
-                    $orderDetail['price'] = $product['price']*$product['sale_percent']*$cart[$product['id']]/100;
+                    $orderDetail['price'] = $product['price']*(100 - $product['sale_percent'])*$cart[$product['id']]/100;
                 } else {
                     $orderDetail['price'] = $product['price'];
                 }

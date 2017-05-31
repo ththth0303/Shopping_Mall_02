@@ -57,11 +57,14 @@ class Helpers
         $total = 0;
         foreach ($products as $product) {
             if ($product['sale_percent']) {
-                $total += $product['price']*(100 - $product['sale_percent'])*$cart[$product['id']]/100;
+                if ($product['sale_percent'] > 100) {
+                    $product['sale_percent'] = 100;
+                }
+                $total += round($product['price']*(100 - $product['sale_percent']), 0, PHP_ROUND_HALF_DOWN)*$cart[$product['id']]/100;
             } else {
                 $total += $product['price']*$cart[$product['id']];
             }
         }
-        return $total;
+        return number_format($total);
     }
 }

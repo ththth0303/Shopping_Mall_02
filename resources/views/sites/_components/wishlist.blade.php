@@ -44,17 +44,22 @@
 
                 <div class="col-xs-12 col-sm-3 no-margin">
                     <div class="text-right">
-                        <div class="add-cart-button" product="{{ $wish->products['id'] }}">
                         @if (session()->has('cart'))
                             @if (in_array($wish->products['id'], array_keys(session()->get('cart'))))
-                                <a class="add_to_cart_button product_type_simple btn btn-warning" href="javascript:void(0)">{{ trans('sites.in_your_cart') }}</a>
+                                <div class="" product="{{ $wish->products['id'] }}">
+                                    <a class="btn btn-warning" href="javascript:void(0)">{{ trans('sites.in_your_cart') }}</a>
+                                </div>
                             @else
-                                <a class="le-button add_to_cart_button product_type_simple" href="javascript:void(0)">{{ trans('sites.add_cart') }}</a>  
+                                <div class="add-cart-button" product="{{ $wish->products['id'] }}">
+                                    <a class="le-button add_to_cart_button product_type_simple" href="javascript:void(0)">{{ trans('sites.add_cart') }}</a>
+                                </div>
                             @endif
                         @else
-                            <a class="le-button add_to_cart_button product_type_simple" href="javascript:void(0)">{{ trans('sites.add_cart') }}</a>
+                            <div class="add-cart-button" product="{{ $wish->products['id'] }}">
+                                <a class="le-button add_to_cart_button product_type_simple" href="javascript:void(0)">{{ trans('sites.add_cart') }}</a>
+                            </div>
                         @endif
-                        </div>
+                        
                     </div>
                 </div>
 
