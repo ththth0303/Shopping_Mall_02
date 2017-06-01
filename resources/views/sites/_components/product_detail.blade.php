@@ -84,7 +84,7 @@
                     @endif
                 @else
                     <div class="le-quantity">
-                        <input name="quantity" type="number" value="{{ session()->get('cart')[$product['id']] ? $cart[$product['id']] : '1' }}" min="1" />
+                        <input name="quantity" type="number" value="1" min="1" />
                         <input name="product" type="text" hidden="true" value="{{ $product['id'] }}" />
                         {{-- <a class="plus" href="#add"></a> --}}
                     </div>
