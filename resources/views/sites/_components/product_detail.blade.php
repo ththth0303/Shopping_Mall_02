@@ -57,8 +57,8 @@
                 <div class="brand">sony</div>
 
                 <div class="buttons-holder">
-                    <a class="btn-add-to-wishlist" href="#">{{ trans('sites.add_to_wishlist') }}</a>
-                    <a class="btn-add-to-compare" href="#">{{ trans('sites.add_to_compare_list') }}</a>
+                    <a class="btn-add-to-wishlist btn-add-to-wishlist" product="{{ $product['id'] }}" href="javascript:void(0)">{{ trans('sites.add_to_wishlist') }}</a>
+                    <a class="btn-add-to-compare addToCompare" product="{{ $product['id'] }}" href="javascript:void(0)">{{ trans('sites.add_to_compare_list') }}</a>
                 </div>
 
                 <div class="excerpt">
@@ -66,23 +66,26 @@
                 </div>
                 
                 <div class="prices">
-                @if ($product['sale_percent'] !=0)
-                    <div class="price-current">{{ $product['price']*$product['sale_percent']/100 }}</div>
-                    <div class="price-prev">{{ $product['price'] }}</div>
+                    <div class="price-current">{{ number_format(App\Helpers\Helpers::priceProduct($product)) . 'đ'}}</div>
+                    <div class="price-prev">{{ number_format($product['price']) . 'đ' }}</div>
                 </div>
-                @else
-                    <div class="price-current">{{ $product['price'] }}</div>
-                     <div class="price-pev"></div>
-                @endif
                 <div class="qnt-holder">
                     <div class="le-quantity">
-                        <form>
+                        <form url="product" method="get">
                             <a class="minus" href="#reduce"></a>
                             <input name="quantity" readonly="readonly" type="text" value="1" />
                             <a class="plus" href="#add"></a>
+                            
                         </form>
+                         {!! Form::open(['route' => 'product.comment.add', 'method' => 'post']) !!}
+                            {!! Form::label(trans('sites.your_comment')) !!}
+                            {!! Form::textarea('content', $value = '', ['id' => 'content', 'rows' => '2', 'class' => 'le-input']) !!}
+                            {!! Form::hidden('product_id', $value = $product_id) !!}
+                            {!! Form::button(trans('sites.submit'), ['id' => 'add-comment', 'class' => 'le-button', 'product_id' => $product_id, 'parent_id' => null, 'user_id' => Auth::user() ? Auth::user()->id : '' ]) !!}
+                        {!! Form::close() !!}
+
                     </div>
-                    <a id="addto-cart" href="cart.html" class="le-button huge">{{ trans('sites.add_to_cart') }}</a>
+                    <button type="submit" class="le-button huge">{{ trans('sites.buy') }}</button>
                 </div><!-- /.qnt-holder -->
             </div><!-- /.body -->
 
@@ -109,18 +112,20 @@
                     <p>more des</p>
 
                 </div><!-- /.tab-pane #description -->
-
+                @php
+                    $profiles = App\Helpers\Helpers::getProfileFull($product);
+                @endphp
                 <div class="tab-pane" id="additional-info">
                     <table class="table table-sm table-hover ">
                         <thead>
                             <th>atributtue</th>
                             <th>detail</th>
                         </thead>
-                    @foreach ($productDetail as  $key => $value)
+                    @foreach ($profiles as  $key => $value)
                         <tbody>
                             <tr>
-                                <th class="row">{{ $key }}</th>
-                                <td>{{ $value }}</td>
+                                <th class="row">{{ trans('sites.' . $key) }}</th>
+                                <td>{{ $value? $value : trans('sites.none') }}</td>
                             </tr>
                     @endforeach
                         </tbody>
