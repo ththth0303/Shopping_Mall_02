@@ -67,7 +67,7 @@ class OrderController extends Controller
                 $order->orderDetails()->create($orderDetail);
             }
             DB::commit();
-            session()->flush('cart');
+            session()->forget('cart');
 
             return view('sites.user.bill');
         } catch (Exception $e) {

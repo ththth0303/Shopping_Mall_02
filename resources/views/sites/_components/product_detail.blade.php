@@ -70,22 +70,27 @@
                     <div class="price-prev">{{ number_format($product['price']) . 'đ' }}</div>
                 </div>
                 <div class="qnt-holder">
+                <form action="{{ asset('cart/add') }}" method="get">
+                @if (!empty(session()->get('cart')))
+                    @if (in_array($product['id'], array_keys(session()->get('cart'))))
+                        <h1 type="text" class="btn btn-warning huge">{{ trans('sites.in_your_cart') }}</h1>
+                    @else
+                        <div class="le-quantity">
+                            <input name="quantity" type="number" value="1" min="1" />
+                            <input name="product" type="text" hidden="true" value="{{ $product['id'] }}" />
+                            {{-- <a class="plus" href="#add"></a> --}}
+                        </div>
+                         <button type="submit" class="le-button huge">{{ trans('sites.buy') }}</button>
+                    @endif
+                @else
                     <div class="le-quantity">
-                        <form url="product" method="get">
-                            <a class="minus" href="#reduce"></a>
-                            <input name="quantity" readonly="readonly" type="text" value="1" />
-                            <a class="plus" href="#add"></a>
-                            
-                        </form>
-                         {!! Form::open(['route' => 'product.comment.add', 'method' => 'post']) !!}
-                            {!! Form::label(trans('sites.your_comment')) !!}
-                            {!! Form::textarea('content', $value = '', ['id' => 'content', 'rows' => '2', 'class' => 'le-input']) !!}
-                            {!! Form::hidden('product_id', $value = $product_id) !!}
-                            {!! Form::button(trans('sites.submit'), ['id' => 'add-comment', 'class' => 'le-button', 'product_id' => $product_id, 'parent_id' => null, 'user_id' => Auth::user() ? Auth::user()->id : '' ]) !!}
-                        {!! Form::close() !!}
-
+                        <input name="quantity" type="number" value="{{ session()->get('cart')[$product['id']] ? $cart[$product['id']] : '1' }}" min="1" />
+                        <input name="product" type="text" hidden="true" value="{{ $product['id'] }}" />
+                        {{-- <a class="plus" href="#add"></a> --}}
                     </div>
                     <button type="submit" class="le-button huge">{{ trans('sites.buy') }}</button>
+                @endif
+                </form>
                 </div><!-- /.qnt-holder -->
             </div><!-- /.body -->
 
