@@ -25,11 +25,11 @@
         {!! Form::open(['route' => ['admin.product.update',  $product['id']], 'method' => 'put', 'enctype' => 'multipart/form-data']) !!}
         <ul>
             <li>
-                {!! Form::label('name', trans('view.Name'), ['class' => 'label']) !!}
+                {!! Form::label('name', 'Tên sản phẩm', ['class' => 'label']) !!}
                 {!! Form::text('name', $value = $product['name'], $attributes = ['placeholder' => trans('view.name'), 'class' => 'form-control']) !!}
             </li>
             <li>
-                {!!Form::label('name', trans('view.description'), ['class' => 'label'])!!}
+                {!!Form::label('name', 'Mô tả', ['class' => 'label'])!!}
                 {!!Form::text('description', $value = $product['description'], $attributes = ['placeholder' => trans('view.description'), 'class' => 'form-control'])!!}
             </li>
             <li>

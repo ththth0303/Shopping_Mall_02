@@ -11,6 +11,7 @@ use App\Helpers\Helpers;
 use Session;
 use Auth;
 use DB;
+use App\Http\Requests\Admin\OrderRequest;
 
 class OrderController extends Controller
 {
@@ -49,7 +50,7 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OrderRequest $request)
     {
         DB::beginTransaction();
         try {

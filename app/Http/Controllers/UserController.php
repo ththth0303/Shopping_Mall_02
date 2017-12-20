@@ -105,19 +105,17 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $user = $this->user->find($id);
         try {
             $user->fill($request->all());
-            $user->password = Crypt::decrypt($user->password);
-
             if ($request->hasFile('avatar')) {
-                $avatarName = Helpers::importFile($request->input('avatar'), config('setup.user_avatar'));
+                $avatarName = Helpers::importFile($request->avatar, 'images');
                 $user->avatar = $avatarName;
             }
             if ($user->save()) {
-                $request->session()->flash('success', trans('view.add_user_success'));
+                $request->session()->flash('success', 'Sửa thành công');
             } else {
                 $request->session()->flash('fail', trans('view.add_user_fail'));
             }

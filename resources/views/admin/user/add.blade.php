@@ -50,14 +50,13 @@
                 </tr>
                 <tr>
                     <td>{!!Form::label('avatar', trans('view.avatar'))!!}</td>
-                    <td>{!!Form::file('avatar', $value = '')!!}</td>
+                    <td>{!!Form::file('avatar')!!}</td>
                 </tr>
                 <tr>
                     <td>{!!Form::label('sex', trans('view.sex'))!!}</td>
                     <td>{!!Form::select('sex', [
                             '1' => trans('view.male'),
-                            '2' => trans('view.female'),
-                            '3' => trans('view.unknow'),
+                            '2' => trans('view.female')
                         ],
                         null, ['placeholder' => trans('view.sex')], ['class' => 'form-control'])!!}</td>
                 </tr>

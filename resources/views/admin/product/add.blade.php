@@ -23,11 +23,11 @@
         {!!Form::open(['route' => ['admin.product.store'], 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
         <ul>
             <li>
-                {!!Form::label('name', trans('view.name'), ['class' => 'label'])!!}
+                {!!Form::label('name', 'Tên sản phẩm', ['class' => 'label'])!!}
                 {!!Form::text('name', $value = '', $attributes = ['placeholder' => trans('view.name'), 'class' => 'form-control'])!!}
             </li>
             <li>
-                {!!Form::label('name', trans('view.description'), ['class' => 'label'])!!}
+                {!!Form::label('name', 'Mô tả', ['class' => 'label'])!!}
                 {!!Form::text('description', $value = '', $attributes = ['placeholder' => trans('view.description'), 'class' => 'form-control'])!!}
             </li>
             <li>

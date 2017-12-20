@@ -33,11 +33,6 @@
                     <td>{!!Form::text('email', $value = $user['email'], ['class' => 'form-control'],['disabled'])!!}</td>
                 </tr>
                 <tr>
-                    <td>{!!Form::label('password', trans('view.new_password'))!!}</td>
-                    <td>{!!Form::password('new_password', ['class' => 'form-control'],
-                    ['placeholder' => $user['password']])!!}</td>
-                </tr>
-                <tr>
                     <td>{!!Form::label('address', trans('view.address'))!!}</td>
                     <td>{!!Form::text('address', $value = $user['address'], ['class' => 'form-control'])!!}</td>
                 </tr>
@@ -47,24 +42,23 @@
                 </tr>
                 <tr>
                     <td>{!!Form::label('avatar', trans('view.avatar'))!!}</td>
-                    <td>{!!Form::file('avatar', $value = '')!!}</td>
+                    <td>{!!Form::file('avatar')!!}</td>
                 </tr>
                 <tr>
                     <td>{!!Form::label('sex', trans('view.sex'))!!}</td>
                     <td>{!!Form::select('sex', [
                             '1' => trans('view.male'),
-                            '2' => trans('view.female'),
-                            '3' => trans('view.unknow'),
+                            '2' => trans('view.female')
                         ],
-                        null, ['placeholder' => trans('view.sex')], ['class' => 'form-control'])!!}</td>
+                        $user['sex'], ['placeholder' => trans('view.sex')], ['class' => 'form-control'])!!}</td>
                 </tr>
                 <tr>
                     <td>{!!Form::label('rule', trans('view.rule'))!!}</td>
                     <td>{!!Form::select('rule', [
                             '1' => trans('view.rule_admin'),
                             '0' => trans('view.rule_user'),
-                        ],
-                        null, ['placeholder' => trans('view.rule')], ['class' => 'form-control'])!!}</td>
+                        ], 
+                        $user['rule'], ['placeholder' => trans('view.rule')], ['class' => 'form-control'])!!}</td>
                 </tr>
             </table>
             {!!Form::submit(trans('view.update'), ['class' => 'btn btn-success'])!!}

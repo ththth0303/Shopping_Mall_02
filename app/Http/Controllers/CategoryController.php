@@ -93,7 +93,7 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, Category $category)
     {
         if ($category->update(['name' => $request->name])) {
-            session()->flash('success', trans('view.delete_category_seccess'));
+            session()->flash('success', 'Sửa danh mục thành công');
         } else {
             session()->flash('fail', trans('view.sorry_something_went_wrong'));
         }
