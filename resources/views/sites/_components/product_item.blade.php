@@ -61,7 +61,7 @@
             @else
                 <a class="btn-add-to-wishlist" href="javascript:void(0)" product ="{{ $product['id'] }}">{{ trans('sites.add_to_wishlist') }}</a>
             @endif
-                <a class="btn-add-to-compare addToCompare" href="javascript:void(0)"  product ="{{ $product['id'] }}">{{ trans('sites.compare') }}</a>
+                <!-- <a class="btn-add-to-compare addToCompare" href="javascript:void(0)"  product ="{{ $product['id'] }}">{{ trans('sites.compare') }}</a> -->
             </div>
         </div>
     </div>

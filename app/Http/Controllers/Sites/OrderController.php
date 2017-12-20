@@ -74,7 +74,7 @@ class OrderController extends Controller
                             ->with('orderDetails.product')
                             ->first();
             DB::commit();
-            session()->flush('cart');
+            session()->forget('cart');
 
             return view('sites.user.bill', ['orders' => $orders, 'orderTotal' => $orderTotal]);
         } catch (Exception $e) {

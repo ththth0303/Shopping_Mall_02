@@ -4,7 +4,7 @@ return [
     'profile' => 'Thông tin cá nhân',
     'logout' => 'Đăng Xuất',
     'dashboard' => 'Trang Chủ',
-    'app_name' => 'Shop điện thoại Framgia',
+    'app_name' => 'Shop điện thoại ',
     'copyright' => 'Copyright',
     'all_rights_reserved' => 'All rights reserved.',
     'version_number' => '1.6.9',

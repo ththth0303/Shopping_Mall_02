@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('admin', 'AdminController@index')->middleware('admin');
+Route::get('admin', 'AdminController@index')->middleware('auth');
 Route::get('/', 'Sites\HomeController@index')->name('/');
 
 Route::get('search', 'Sites\HomeController@search')->name('search');

@@ -1,5 +1,5 @@
 {
-  "name": "Shopping_Mall_02",
+  "name": "shopping_mall_02",
   "description": "",
   "main": "",
   "authors": [
@@ -8,7 +8,6 @@
   "license": "MIT",
   "homepage": "https://github.com/tuanlabophp/Shopping_Mall_02",
   "dependencies": {
-    "AdminLTE": "adminlte#^2.3.11",
     "bootstrap": "^3.3.7",
     "components-font-awesome": "^4.7.0",
     "animate.css": "^3.5.2",

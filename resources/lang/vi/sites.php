@@ -1,6 +1,6 @@
 <?php
 return [
-    'app_name' => 'Shop điện thoại Framgia',
+    'app_name' => 'Shop điện thoại',
     'home' => 'trang chủ',
     'register' => 'đăng ký',
     'wishlist' => 'ưa thích',
@@ -171,6 +171,6 @@ return [
     'date_of_invoice' => 'Ngày tạo hóa đơn',
     'quantity' => 'Số lượng',
     'unit_price' => 'Gía mặt hàng',
-    'notice_text' => 'Cửa hàng FramgiaPhone',
+    'notice_text' => 'Cửa hàng Phone',
     'notice' => 'Miễn phí ship',
 ];
